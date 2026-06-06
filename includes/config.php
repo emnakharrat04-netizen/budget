@@ -1,12 +1,9 @@
 <?php
-// ============================================================
-//  Configuration de la base de données
-//  Modifiez ces valeurs selon votre environnement XAMPP/WAMP
-// ============================================================
+
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'financeapp');
 define('DB_USER', 'root');
-define('DB_PASS', '');          // Mot de passe MySQL (vide par défaut sur XAMPP)
+define('DB_PASS', '');         
 define('DB_CHARSET', 'utf8mb4');
 
 define('APP_NAME', 'FinanceApp');

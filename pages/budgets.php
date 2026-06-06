@@ -75,8 +75,9 @@ unset($b);
       <?php if ($b['owner_id'] == $uid): ?>
       <form method="POST" style="display:inline" onsubmit="return confirm('Supprimer ce budget ?')">
         <input type="hidden" name="bid" value="<?= $b['id'] ?>"/>
-        <button class="btn btn-sm btn-danger" name="del_budget"><i class="ti ti-trash"></i></button>
-      </form>
+        <button class="btn btn-sm btn-danger" name="del_budget">
+  <i class="ti ti-trash"></i> Supprimer
+</button>      </form>
       <?php endif; ?>
     </div>
   </div>

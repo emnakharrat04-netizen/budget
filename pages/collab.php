@@ -130,7 +130,7 @@ $avatarColors = ['#E6F1FB:#0C447C','#EAF3DE:#3B6D11','#FAEEDA:#BA7517','#EEEDFE:
       <form method="POST" style="display:inline;margin-left:6px">
         <input type="hidden" name="bid" value="<?= $activeBud ?>"/>
         <input type="hidden" name="mid" value="<?= $m['user_id'] ?>"/>
-        <button class="btn btn-sm btn-danger" name="remove_member" onclick="return confirm('Retirer ce membre ?')"><i class="ti ti-x"></i></button>
+        <button class="btn btn-sm btn-danger" name="remove_member" onclick="return confirm('Retirer ce membre ?')"><i class="ti ti-x"></i>🗑️</button>
       </form>
       <?php endif; ?>
     </div>

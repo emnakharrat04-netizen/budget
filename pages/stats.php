@@ -41,8 +41,10 @@ $pieColors = ['#378ADD','#3B6D11','#E24B4A','#BA7517','#534AB7','#888780','#0891
   <form method="GET" style="display:flex;align-items:center;gap:8px">
     <label class="text-muted">Mois :</label>
     <input class="form-control" type="month" name="month" value="<?= $selMonth ?>" style="width:auto"/>
-    <button class="btn btn-primary" type="submit"><i class="ti ti-refresh"></i></button>
-  </form>
+    <button class="btn btn-primary" type="submit" title="Actualiser">
+  <i class="ti ti-refresh"></i>
+  Actualiser
+</button></form>
 </div>
 
 <div class="stats-row">

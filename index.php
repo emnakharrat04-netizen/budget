@@ -77,10 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="auth-link" style="margin-top:14px">
       Pas encore de compte ? <a href="?mode=register">Créer un compte</a>
     </div>
-    <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:11px;color:var(--muted);text-align:center">
-      <strong>Démo :</strong> admin@financeapp.com / emna@financeapp.com<br/>
-      Mot de passe universel : <strong>password</strong>
-    </div>
+   
 
     <?php else: ?>
     <h2>Inscription</h2>

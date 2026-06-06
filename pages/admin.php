@@ -80,18 +80,40 @@ $activeTab = $_GET['tab'] ?? 'users';
       <td><?= $u['tx_count'] ?></td>
       <td><?= date('d/m/Y',strtotime($u['created_at'])) ?></td>
       <td>
-        <div style="display:flex;gap:4px;flex-wrap:wrap">
-          <?php if ($u['status']==='pending'): ?>
-          <form method="POST" style="display:inline"><input type="hidden" name="uid" value="<?= $u['id'] ?>"/><button class="btn btn-sm btn-success" name="validate_user"><i class="ti ti-check"></i> Valider</button></form>
-          <?php endif; ?>
-          <?php if ($u['id'] != $user['id'] && $u['status']==='active'): ?>
-          <form method="POST" style="display:inline"><input type="hidden" name="uid" value="<?= $u['id'] ?>"/><button class="btn btn-sm btn-danger" name="disable_user"><i class="ti ti-ban"></i></button></form>
-          <?php endif; ?>
-          <?php if ($u['id'] != $user['id']): ?>
-          <form method="POST" style="display:inline" onsubmit="return confirm('Supprimer définitivement ce compte ?')"><input type="hidden" name="uid" value="<?= $u['id'] ?>"/><button class="btn btn-sm btn-danger" name="delete_user"><i class="ti ti-trash"></i></button></form>
-          <?php endif; ?>
-        </div>
-      </td>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+
+    <!-- VALIDATE -->
+    <?php if ($u['status']==='pending'): ?>
+      <form method="POST">
+        <input type="hidden" name="uid" value="<?= $u['id'] ?>"/>
+        <button class="btn btn-sm btn-success" name="validate_user">
+          <i class="ti ti-check"></i> Valider
+        </button>
+      </form>
+    <?php endif; ?>
+
+    <!-- DISABLE -->
+    <?php if ($u['id'] != $user['id'] && $u['status']==='active'): ?>
+      <form method="POST">
+        <input type="hidden" name="uid" value="<?= $u['id'] ?>"/>
+        <button class="btn btn-sm" name="disable_user">
+          <i class="ti ti-ban"></i> Désactiver
+        </button>
+      </form>
+    <?php endif; ?>
+
+    <!-- DELETE -->
+    <?php if ($u['id'] != $user['id']): ?>
+      <form method="POST" onsubmit="return confirm('Supprimer ce compte ?')">
+        <input type="hidden" name="uid" value="<?= $u['id'] ?>"/>
+        <button class="btn btn-sm btn-danger" name="delete_user">
+          <i class="ti ti-trash"></i> Supprimer
+        </button>
+      </form>
+    <?php endif; ?>
+
+  </div>
+</td>
     </tr>
     <?php endforeach; ?>
     </tbody>

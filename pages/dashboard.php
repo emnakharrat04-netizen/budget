@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/../includes/header.php';
 $pdo = getDB();
 $uid = $user['id'];
@@ -38,7 +39,8 @@ $recent = $pdo->prepare("
 ");
 $recent->execute([$uid]); $recentTx = $recent->fetchAll();
 
-$maxBar = max(array_column($months,'val'), 1);
+$values = array_column($months, 'val');
+$maxBar = !empty($values) ? max($values) : 1;
 $pieTotal = array_sum(array_column($catData,'total')) ?: 1;
 $pieColors = ['#378ADD','#3B6D11','#E24B4A','#BA7517','#534AB7','#888780'];
 $pieDeg = 0; $pieGrad = '';
@@ -83,14 +85,53 @@ foreach ($catData as $i => $c) {
       </ul>
     </div>
   </div>
-  
-  <?php foreach ($months as $m): ?>
-    <p>
-        <?= $m['label'] ?> :
-        <?= $m['val'] ?> €
-    </p>
-<?php endforeach; ?>
+  <div class="card">
+    <div class="card-title">Évolution mensuelle des dépenses</div>
 
+    <div style="
+        display:flex;
+        align-items:flex-end;
+        justify-content:space-around;
+        height:280px;
+        padding:20px;
+        border-top:1px solid #eee;
+    ">
+
+        <?php foreach ($months as $m): ?>
+
+            <?php $height = ($m['val'] / $maxBar) * 220; ?>
+
+            <div style="
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                justify-content:flex-end;
+                height:100%;
+                flex:1;
+            ">
+
+                <div style="
+                    width:40px;
+                    height:<?= $height ?>px;
+                    background:#378ADD;
+                    border-radius:8px 8px 0 0;
+                "></div>
+
+                <div style="margin-top:8px;font-size:12px;">
+                    <?= $m['label'] ?>
+                </div>
+
+                <div style="font-size:11px;color:gray;">
+                    <?= round($m['val']) ?> €
+                </div>
+
+            </div>
+
+        <?php endforeach; ?>
+
+    </div>
+</div>
+        </div>
 <div class="card">
   <div class="flex-between mb-0" style="margin-bottom:12px">
     <div class="card-title" style="margin:0">Transactions récentes</div>

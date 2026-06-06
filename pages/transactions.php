@@ -123,14 +123,27 @@ $buds->execute([$uid,$uid]); $budgets = $buds->fetchAll();
           <td><span class="badge badge-<?= $tx['type']==='income'?'income':'expense' ?>"><?= $tx['type']==='income'?'Revenu':'Dépense' ?></span></td>
           <td class="text-right <?= $tx['type']==='income'?'amount-pos':'amount-neg' ?>"><?= ($tx['type']==='income'?'+':'-').formatMoney($tx['amount']) ?></td>
           <td>
-            <div style="display:flex;gap:4px">
-              <button class="btn btn-sm" onclick='openEditModal(<?= json_encode($tx) ?>)'><i class="ti ti-edit"></i></button>
-              <form method="POST" style="display:inline" onsubmit="return confirm('Supprimer cette transaction ?')">
-                <input type="hidden" name="tx_id" value="<?= $tx['id'] ?>"/>
-                <button class="btn btn-sm btn-danger" name="del_tx" type="submit"><i class="ti ti-trash"></i></button>
-              </form>
-            </div>
-          </td>
+  <div style="display:flex;gap:6px;flex-wrap:wrap">
+
+    <button class="btn btn-sm btn-edit"
+            onclick='openEditModal(<?= json_encode($tx) ?>)'>
+      <i class="ti ti-edit"></i> Modifier
+    </button>
+
+    <form method="POST" style="display:inline"
+          onsubmit="return confirm('Supprimer cette transaction ?')">
+
+      <input type="hidden" name="tx_id" value="<?= $tx['id'] ?>"/>
+
+      <button class="btn btn-sm btn-danger"
+              name="del_tx" type="submit">
+        <i class="ti ti-trash"></i> Supprimer
+      </button>
+
+    </form>
+
+  </div>
+</td>
         </tr>
         <?php endforeach; ?>
         <?php if (empty($txs)): ?>

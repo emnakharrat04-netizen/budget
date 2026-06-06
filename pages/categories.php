@@ -42,10 +42,12 @@ $colors = ['#FEF9C3','#DBEAFE','#D1FAE5','#EDE9FE','#FEE2E2','#E0F2FE','#FFEDD5'
     </div>
     <div class="cat-actions">
       <?php if ($c['user_id'] == $uid): ?>
-      <button class="btn btn-sm" onclick='openEditCat(<?= json_encode($c) ?>)'><i class="ti ti-edit"></i></button>
+      <button class="btn btn-sm" onclick='openEditCat(<?= json_encode($c) ?>)'><i class="ti ti-edit"></i>✎</button>
       <form method="POST" style="display:inline" onsubmit="return confirm('Supprimer cette catégorie ?')">
         <input type="hidden" name="cid" value="<?= $c['id'] ?>"/>
-        <button class="btn btn-sm btn-danger" name="del_cat"><i class="ti ti-trash"></i></button>
+        <button class="btn btn-sm btn-danger" name="del_cat" onclick="return confirm('Supprimer cette catégorie ?')">
+    <i class="ti ti-trash"></i> 🗑️
+</button>
       </form>
       <?php else: ?>
       <span class="text-muted" style="font-size:11px">Défaut</span>

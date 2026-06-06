@@ -1,7 +1,4 @@
--- ============================================================
---  FinanceApp - Script de création de la base de données
---  Compatible MySQL 5.7+
--- ============================================================
+
 
 CREATE DATABASE IF NOT EXISTS financeapp CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE financeapp;
